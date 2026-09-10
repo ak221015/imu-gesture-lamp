@@ -1,0 +1,10 @@
+secrets.h
+wiz.txt
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+.vscode/
+experiments/
