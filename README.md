@@ -22,7 +22,7 @@ Modes 0-2 are neutral, cold and warm white, the rest are built-in WiZ scenes.
 
 1. The stick reads the accelerometer and gyroscope 100 times per second and
    sends one CSV line per sample over UDP to port 5005.
-2. `upd_to_csv.py` records those packets into files, one gesture per file.
+2. `udp_to_csv.py` records those packets into files, one gesture per file.
 3. `model_train.py` cuts every recording into 0.5 s windows with 50% overlap,
    builds 18 features per window (mean, standard deviation and peak-to-peak
    for 6 channels) and trains a random forest.
@@ -67,7 +67,7 @@ Python side:
 
 ## Recording your own gestures
 
-Set the output file name in `upd_to_csv.py`, run it, press Enter and perform
+Set the output file name in `udp_to_csv.py`, run it, press Enter and perform
 the gesture. Recording lasts 2 seconds. Files go to `gestures/<name>/` and are
 named `<name>1.csv` ... `<name>40.csv`. Then run `model_train.py` to retrain.
 
@@ -89,7 +89,7 @@ one as a test file.
 | File | Purpose |
 | --- | --- |
 | `gesture_sender/gesture_sender.ino` | Firmware, streams IMU data over UDP |
-| `upd_to_csv.py` | Records one gesture into a CSV file |
+| `udp_to_csv.py` | Records one gesture into a CSV file |
 | `model_train.py` | Trains the classifier, saves `model.joblib` |
 | `main.py` | Live recognition and lamp control |
 | `gestures/` | Recorded dataset, 240 files |
