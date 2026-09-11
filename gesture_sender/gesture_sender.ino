@@ -29,8 +29,9 @@ void setup() {
   counter = micros();
 }
 void loop() {
-  // Note: micros() overflows after ~71 minutes and the stream stops
-  if (micros() >= counter) {
+  // One sample every 10000 microseconds = 100 Hz
+  // Comparing the difference keeps this correct when micros() overflows
+  if ((long)(micros() - counter) >= 0)  {
     counter += 10000;
     M5.Imu.getAccel(&ax, &ay, &az);
     M5.Imu.getGyro(&gx, &gy, &gz);
@@ -48,5 +49,6 @@ void loop() {
     udp.print(gy, 4);
     udp.print(",");
     udp.println(gz, 4);
+    udp.endPacket();
   }
 }

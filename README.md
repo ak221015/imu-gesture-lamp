@@ -33,6 +33,19 @@ Modes 0-2 are neutral, cold and warm white, the rest are built-in WiZ scenes.
 
 Accuracy on held-out recordings: 0.98 (222 windows).
 
+| Gesture | Precision | Recall | Windows |
+| --- | --- | --- | --- |
+| circle | 0.97 | 0.97 | 70 |
+| nothing | 0.94 | 0.94 | 32 |
+| rotate | 1.00 | 1.00 | 30 |
+| shake | 1.00 | 1.00 | 30 |
+| swipe_lr | 1.00 | 1.00 | 30 |
+| swipe_ud | 1.00 | 1.00 | 30 |
+
+All four errors are between `circle` and `nothing`: a slow circle has a lower
+amplitude than the sharp gestures, which puts it close to the resting class.
+The four gestures that trigger a lamp command are never confused with each other.
+
 ## Hardware
 
 - M5StickC Plus2 (ESP32-PICO-V3-02, MPU6886 IMU)
