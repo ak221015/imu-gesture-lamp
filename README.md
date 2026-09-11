@@ -57,7 +57,7 @@ The four gestures that trigger a lamp command are never confused with each other
 Install the Python dependencies:
 
 ```
-pip install pandas scikit-learn joblib pywizlight
+pip install -r requirements.txt
 ```
 Tested with Python 3.12, scikit-learn 1.8.0, pandas 3.0.5,
 pywizlight 0.6.6 and joblib 1.5.3.
@@ -92,8 +92,6 @@ one as a test file.
 - Gestures must last about 0.8 seconds. A command fires only after three
   identical predictions in a row, so a very fast gesture may be missed.
   Repeat it slightly slower.
-- `micros()` on the stick overflows after about 71 minutes and the stream
-  stops. Restart the stick.
 - The receiver blocks while waiting for packets. If the stick disconnects,
   stop the script with Ctrl+C.
 
